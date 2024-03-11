@@ -7,24 +7,24 @@ v_table varchar2(100);
 v_count int;
 begin
 
---ÅĞ¶ÏÊÇ·ñ´æÔÚÁÙÊ±±í 
---´´½¨ÁÙÊ±±í
---´¦ÀíÊı¾İÔ´
---½«Êı¾İÔ´Ìí¼Óµ½ÁÙÊ±±íÖĞ
---²éÑ¯ÁÙÊ±±í
---É¾³ıÁÙÊ±±í
+--åˆ¤æ–­æ˜¯å¦å­˜åœ¨ä¸´æ—¶è¡¨ 
+--åˆ›å»ºä¸´æ—¶è¡¨
+--å¤„ç†æ•°æ®æº
+--å°†æ•°æ®æºæ·»åŠ åˆ°ä¸´æ—¶è¡¨ä¸­
+--æŸ¥è¯¢ä¸´æ—¶è¡¨
+--åˆ é™¤ä¸´æ—¶è¡¨
 
 
---²éÑ¯±íÊÇ·ñ´æÔÚ£¬count(1)µÄÖµ¸³¸ø v_count
+--æŸ¥è¯¢è¡¨æ˜¯å¦å­˜åœ¨ï¼Œcount(1)çš„å€¼èµ‹ç»™ v_count
   v_table :='t_table';
   select count(1) into v_count from user_tables where table_name = upper(v_table); 
-   --±í´æÔÚ   É¾³ı±í
+   --è¡¨å­˜åœ¨   åˆ é™¤è¡¨
   if v_count = 1 then
-   --execute immediate 'truncate table t_table';--Çå¿Õ±íÖĞÊı¾İ ·ñÔòÎŞ·¨drop table
+   --execute immediate 'truncate table t_table';--æ¸…ç©ºè¡¨ä¸­æ•°æ® å¦åˆ™æ— æ³•drop table
    execute immediate 'drop table t_table';
  end if;
   commit;
-    --´´½¨±í  
+    --åˆ›å»ºè¡¨  
   execute immediate 'create table t_table'||'(EMPNO NUMBER(4,0), 
   ENAME VARCHAR2(10), 
   JOB VARCHAR2(9), 
@@ -49,6 +49,6 @@ begin
   dbms_output.put_line(v_total);
  
     end loop;  
-    commit;--Ìá½»
+    commit;--æäº¤
   -- execute immediate 'select * from t_table';
 end;
