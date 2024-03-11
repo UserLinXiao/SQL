@@ -1,0 +1,3 @@
+DECLARE @er INT
+SET @er=100
+EXEC dbo.pro_ss  @er  output-- int
